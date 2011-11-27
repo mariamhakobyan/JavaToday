@@ -1,5 +1,56 @@
 package co.javatoday.oauth.parser;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import com.google.gson.*;
+
+import co.javatoday.data.model.User;
+import co.javatoday.data.model.UserSource;
+
 public class FacebookParser {
+
+	public User getUser(String jsonData) {
+		final User user = new User();
+		user.setUserSource(UserSource.FaceBook);
+		
+		HashMap<String, Object> map = parse(jsonData);
+		
+		user.setId((String)map.get("id"));
+		user.setFirstName((String)map.get("first_name"));
+		user.setLastName((String)map.get("last_name"));
+		user.setLastName((String)map.get("last_name"));
+
+		return user;
+	}
+
+	private HashMap<String, Object> parse(String json) {
+		
+		JsonParser parser = new JsonParser();
+		Object obj = parser.parse(json);
+		if(obj instanceof JsonNull) {
+			return null;
+		}
+		JsonObject jobj = (JsonObject) obj;
+		
+		Set<Map.Entry<String, JsonElement>> set = jobj.entrySet();
+		
+		Iterator<Map.Entry<String, JsonElement>> iterator = set.iterator();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		while (iterator.hasNext()) {
+			Map.Entry<String, JsonElement> entry = iterator.next();
+			String key = entry.getKey();
+			JsonElement value = entry.getValue();
+			if (!value.isJsonPrimitive()) {
+				map.put(key, parse(value.toString()));
+			} else {
+				map.put(key, value.getAsString());
+			}
+		}
+		return map;
+	}
 
 }

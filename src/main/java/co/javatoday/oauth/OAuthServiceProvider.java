@@ -15,7 +15,6 @@ public class OAuthServiceProvider {
 	}
 
 	public OAuthService getService() {
-		System.out.println(config);
 		return new ServiceBuilder().provider(config.getApiClass())
 							.apiKey(config.getApiKey())
 						    .apiSecret(config.getApiSecret())

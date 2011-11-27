@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.javatoday.data.model.User;
 import co.javatoday.oauth.OAuthServiceProvider;
+import co.javatoday.oauth.parser.FacebookParser;
 import co.javatoday.util.StringUtils;
 import static co.javatoday.web.SessionAttributes.*;
 
@@ -64,9 +65,8 @@ public class FacebookController {
 
 		String responseBody = oauthResponse.getBody();
 		if(StringUtils.isNotBlank(responseBody)) {
-			// TODO parse
-			User user = new User();
-			user.setFirstName("Not Parsed Yet!!!");
+			FacebookParser parser = new FacebookParser();
+			User user = parser.getUser(responseBody);
 			request.setAttribute(ATTR_LOGGED_IN_USER, user, SCOPE_SESSION);
 		}
 

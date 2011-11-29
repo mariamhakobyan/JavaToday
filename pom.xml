@@ -5,7 +5,7 @@
   <artifactId>JavaToday</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>JavaToday Maven Webapp</name>
+  <name>JavaToday</name>
   <url>http://maven.apache.org</url>
   
   

@@ -10,80 +10,90 @@
 	 	<c:out value="${loggedInUser.name}"/>
 	</c:if>
 	<section id="articles" class="cf">
-		<article>
-			<figure>
-				<a href="">
-					<img alt="Cake Health" data-id="21312" data-type="Startup" src="" />
-				</a>
-			</figure>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health Track and Optimize Your Healthcare</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-			</div>
-		</article>
-		<article>
-			<figure>
-				<a href="">
-					<img alt="Cake Health" data-id="21312" data-type="Startup" src="" />
-				</a>
-			</figure>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-			</div>
-		</article>
-		<article class="cf"></article>
-		<article>
-			<figure>
-				<a href="">
-					<img alt="Cake Health" data-id="21312" data-type="Startup" src="" />
-				</a>
-			</figure>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-			</div>
-		</article>
-		<article>
-			<figure>
-				<a href="">
-					<img alt="Cake Health" data-id="21312" data-type="Startup" src="" />
-				</a>
-			</figure>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-			</div>
-		</article>
-	</section>
+				<article>
+					<figure>
+						<a href="">
+							<img alt="Cake Health" data-id="21312" data-type="Startup" src="files/2233-fa3754aea8ced658a1e75365904e3839-thumb.png" />
+						</a>
+					</figure>
+					<div class="right">
+						<div class="name">
+							<a href="">Cake Health Track and Optimize Your Healthcare</a>
+						</div>
+						<div class="resume">
+							Track and Optimize Your Healthcare Track and Optimize Your Healthcare and Optimize Your Healthcare Track and Optimize Your Healthcare
+						</div>
+
+						<div class="tags">
+							<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
+						</div>
+						<div class="actions">
+							<a href="">Clean Read</a> &bull; <a href="">Read later</a>
+
+						</div>
+					</div>
+				</article>
+				<article>
+					<figure>
+						<a href="">
+							<img alt="Cake Health" data-id="21312" data-type="Startup" src="files/25991-c4e159eab6820a2001648c279601e72f-thumb.png" />
+						</a>
+					</figure>
+
+					<div class="right">
+						<div class="name">
+							<a href="">Cake Health</a>
+						</div>
+						<div class="resume">
+							Track and Optimize Your Healthcare
+						</div>
+						<div class="tags">
+							<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
+
+						</div>
+					</div>
+				</article>
+				<article>
+					<figure>
+						<a href="">
+							<img alt="Cake Health" data-id="21312" data-type="Startup" src="files/12387-21357e9972b20094f448a382d84da655-thumb.png" />
+						</a>
+					</figure>
+
+					<div class="right">
+						<div class="name">
+							<a href="">Cake Health</a>
+						</div>
+						<div class="resume">
+							Track and Optimize Your Healthcare Track and Optimize Your Healthcare
+						</div>
+						<div class="tags">
+							<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
+
+						</div>
+					</div>
+				</article>
+				<article>
+					<figure>
+						<a href="">
+							<img alt="Cake Health" data-id="21312" data-type="Startup" src="files/2250-d7a2c859581f509b9d96f2b5d23ccbcd-thumb.gif" />
+						</a>
+					</figure>
+
+					<div class="right">
+						<div class="name">
+							<a href="">Cake Health</a>
+						</div>
+						<div class="resume">
+							Track and Optimize Your Healthcare
+						</div>
+						<div class="tags">
+							<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
+
+						</div>
+					</div>
+				</article>
+			</section>
 	
 	<!-- pagination -->
 	<nav>

@@ -20,5 +20,17 @@
 	<definition name="loginPage" extends="baseLayout">
 		<put-attribute name="body" value="/WEB-INF/pages/login.jsp"/>
 	</definition>
+	
+	
+	
+	<definition name="externalLayout" template="/WEB-INF/pages/common/externalLayout.jsp">
+    <put-attribute name="toolbox" value=""/>
+    <put-attribute name="iframe" value=""/>
+  </definition>
+  
+  <definition name="articlePage" extends="externalLayout">
+    <put-attribute name="toolbox" value="/WEB-INF/pages/common/toolbox.jsp"/>
+    <put-attribute name="iframe" value="/WEB-INF/pages/articleView.jsp"/>
+  </definition>
   
 </tiles-definitions>

@@ -12,7 +12,7 @@ public class ArticleController {
 	@RequestMapping(value={"/a/**"}, method = RequestMethod.GET)
 	public ModelAndView view() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("welcomePage");
+		mav.setViewName("articlePage");
 		return mav;
 	}
 }

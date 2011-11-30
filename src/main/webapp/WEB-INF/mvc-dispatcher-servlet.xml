@@ -49,16 +49,17 @@
 	
 	
 	<!-- MongoDB -->
-	<!-- 
-	<mongo:mongo host="localhost" port="27017" />
+	 
+	<mongo:mongo host="ds029117.mongolab.com" port="29117" />
 	<mongo:repositories base-package="co.javatoday.data.repository"/>
 	
 	<bean id="mongoTemplate" class="org.springframework.data.document.mongodb.MongoTemplate">
 		<constructor-arg ref="mongo" />
-		<constructor-arg name="databaseName" value="javatoday" />
-		<constructor-arg name="defaultCollectionName" value="article" />
+		<constructor-arg name="databaseName" value="jtdev" />
+		<property name="username" value="jtdev" />
+    <property name="password" value="jtdevp" />
 	</bean>
-	 -->
+	
 	<!-- end of MongoDB -->
 	
 	<!-- oauth -->

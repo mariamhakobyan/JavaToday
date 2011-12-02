@@ -24,12 +24,20 @@ public class WelcomeController {
 		article.setText("text");
 		/*
 		articleRepository.save(article);
+		*/
 		System.out.println("articles::::");
 		System.out.println(articleRepository.findAll());
 		System.out.println("articles::::");
-		*/
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("welcomePage");
+		return mav;
+	}
+	
+	@RequestMapping(value={"/contacts", "/contact", "/contactus"}, method = RequestMethod.GET)
+	public ModelAndView contactUs() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("contactPage");
 		return mav;
 	}
 }

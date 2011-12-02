@@ -25,6 +25,7 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/global.css" />" media="all"/>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 		<script src="<c:url value="/resources/scripts/global.js" />"></script>
 		<!--[if lt IE 9]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

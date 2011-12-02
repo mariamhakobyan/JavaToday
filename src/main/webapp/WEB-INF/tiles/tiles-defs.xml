@@ -21,6 +21,10 @@
 		<put-attribute name="body" value="/WEB-INF/pages/login.jsp"/>
 	</definition>
 	
+	<definition name="contactPage" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/pages/contact.jsp"/>
+	</definition>
+	
 	
 	
 	<definition name="externalLayout" template="/WEB-INF/pages/common/externalLayout.jsp">

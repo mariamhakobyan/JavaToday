@@ -12,7 +12,7 @@
 		<meta name="description" content="A community of java developers: The future is built by those who can see what's not yet there." />
 		<meta name="keywords" content="java, jvm, developer, developers, java developer, java community, java today, javatoday" />
 	
-		<meta name="author" content="Artur Mkrtchyan" />
+		<meta name="author" content="Artur Mkrtchyan, Grigor Martirosyan" />
 		<meta name="robots" content="index, follow" />
 		<meta name="revisit-after" content="7" />
 		<meta name="language" content="English" />

@@ -15,4 +15,16 @@ public class ArticleController {
 		mav.setViewName("articlePage");
 		return mav;
 	}
+	
+	@RequestMapping(value={"/vote-up"}, method = RequestMethod.GET)
+	public ModelAndView voteUp() {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+	
+	@RequestMapping(value={"/vote-down"}, method = RequestMethod.GET)
+	public ModelAndView voteDown() {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
 }

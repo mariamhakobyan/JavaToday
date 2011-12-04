@@ -1,6 +1,7 @@
 package co.javatoday.oauth.parser;
 
 import java.io.StringReader;
+import java.util.Date;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -15,6 +16,7 @@ public class LinkedInParser extends OauthParser {
 	public User getUser(String xmlData) {
 		final User user = new User();
 		user.setUserSource(UserSource.LinkedIn);
+		user.setLastLogin((new Date()).getTime());
 		
 		DefaultHandler handler = new DefaultHandler() {
 			
@@ -49,7 +51,7 @@ public class LinkedInParser extends OauthParser {
 				} else if(qName.equals("last-name")){
 					user.setLastName(buffer.toString());
 				} else if(qName.equals("id")) {
-					user.setId(buffer.toString());
+					user.setSocialId(buffer.toString());
 				} else if(qName.equals("headline")) {
 					user.setTitle(buffer.toString());
 				}

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.javatoday.data.model.User;
 import co.javatoday.oauth.OAuthServiceProvider;
 import co.javatoday.oauth.parser.TwitterParser;
+import co.javatoday.service.Service;
 import co.javatoday.util.StringUtils;
 import static co.javatoday.web.SessionAttributes.*;
 
@@ -25,6 +26,10 @@ public class TwitterController {
 	@Autowired
 	@Qualifier("twitterServiceProvider")
 	private OAuthServiceProvider twitterServiceProvider;
+	
+	@Autowired
+	@Qualifier("userService")
+	Service userService;
 	
 	@RequestMapping(value={"/login-twitter"}, method = RequestMethod.GET)
 	public String login(WebRequest request) {
@@ -68,6 +73,7 @@ public class TwitterController {
 		if(StringUtils.isNotBlank(responseBody)) {
 			TwitterParser parser = new TwitterParser();
 			User user = parser.getUser(responseBody);
+			userService.save(user);
 			request.setAttribute(ATTR_LOGGED_IN_USER, user, SCOPE_SESSION);
 		}
 

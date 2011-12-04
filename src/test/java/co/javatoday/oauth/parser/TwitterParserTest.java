@@ -78,7 +78,7 @@ public class TwitterParserTest {
 
 		User user = parser.getUser(xmlData);
 		System.out.println(user);
-		assertEquals("122119770", user.getId());
+		assertEquals("122119770", user.getSocialId());
 		assertEquals("Artur", user.getFirstName());
 		assertEquals("", user.getLastName());
 		assertEquals(null, user.getTitle());

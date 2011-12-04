@@ -30,7 +30,7 @@ public class FacebookParserTest {
 		
 		User user = parser.getUser(xmlData);
 		System.out.println(user);
-		assertEquals("524428840", user.getId());
+		assertEquals("524428840", user.getSocialId());
 		assertEquals("Artur", user.getFirstName());
 		assertEquals("Mkrtchyan", user.getLastName());
 		assertEquals(UserSource.FaceBook, user.getUserSourceAsEnum());

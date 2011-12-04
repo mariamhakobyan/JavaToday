@@ -34,7 +34,7 @@ public class LinkedInParserTest {
 		
 		User user = parser.getUser(xmlData);
 		System.out.println(user);
-		assertEquals("OjiuGIIlya", user.getId());
+		assertEquals("OjiuGIIlya", user.getSocialId());
 		assertEquals("Artur", user.getFirstName());
 		assertEquals("Mkrtchyan", user.getLastName());
 		assertEquals("Software Engineer at AtTask, Inc.", user.getTitle());

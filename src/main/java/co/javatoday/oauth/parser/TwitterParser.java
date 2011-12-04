@@ -38,6 +38,8 @@ public class TwitterParser extends OauthParser {
 					buffer.append(new String(ch, start, length).trim());
 				} else if (tagName.equals("id")) {
 					buffer.append(new String(ch, start, length).trim());
+				} else if (tagName.equals("url")) {
+					buffer.append(new String(ch, start, length).trim());
 				}
 			}
 
@@ -51,7 +53,9 @@ public class TwitterParser extends OauthParser {
 					user.setFirstName(buffer.toString());
 					user.setLastName("");
 				} else if(qName.equals("id")){
-					user.setId(buffer.toString());
+					user.setSocialId(buffer.toString());
+				} else if(qName.equals("url")){
+					user.setLink(buffer.toString());
 				}
 			}
 

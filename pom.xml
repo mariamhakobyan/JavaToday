@@ -136,6 +136,18 @@
       <scope>compile</scope>
     </dependency>
     
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-apt</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-mongodb</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+    
   </dependencies>
   
   <build>
@@ -172,6 +184,25 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+			  <groupId>com.mysema.maven</groupId>
+			  <artifactId>maven-apt-plugin</artifactId>
+			  <version>1.0</version>
+			  <executions>
+			    <execution>
+			      <phase>generate-sources</phase>
+			      <goals>
+			        <goal>process</goal>
+			      </goals>
+			      <configuration>
+			        <outputDirectory>target/generated-sources</outputDirectory>
+			        <processor>com.mysema.query.apt.QuerydslAnnotationProcessor</processor>
+			      </configuration>
+			    </execution>
+			  </executions>
+			</plugin>
+			
 			<!--
 			<plugin>
 				<groupId>com.cloudbees</groupId>
@@ -193,6 +224,12 @@
 			<id>spring-maven-milestone</id>
 			<name>Spring Maven Milestone Repository</name>
 			<url>http://maven.springframework.org/milestone</url>
+		</repository>
+		
+		<repository>
+			<id>querydsl-releases</id>
+			<name>Query DSL</name>
+			<url>http://source.mysema.com/maven2/releases</url>
 		</repository>
 		
 	</repositories>

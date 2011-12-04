@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.javatoday.data.model.User;
 import co.javatoday.oauth.OAuthServiceProvider;
 import co.javatoday.oauth.parser.LinkedInParser;
+import co.javatoday.service.Service;
 import co.javatoday.util.StringUtils;
 import static co.javatoday.web.SessionAttributes.*;
 
@@ -24,6 +25,10 @@ public class LinkedInController {
 	@Autowired
 	@Qualifier("linkedInServiceProvider")
 	private OAuthServiceProvider linkedInServiceProvider;
+	
+	@Autowired
+	@Qualifier("userService")
+	Service userService;
 	
 	@RequestMapping(value={"/login-linkedin"}, method = RequestMethod.GET)
 	public String login(WebRequest request) {
@@ -58,14 +63,16 @@ public class LinkedInController {
 		request.setAttribute(ATTR_OAUTH_ACCESS_TOKEN, accessToken, SCOPE_SESSION);
 		
 		// getting user profile
-		OAuthRequest oauthRequest = new OAuthRequest(Verb.GET, "http://api.linkedin.com/v1/people/~:(id,first-name,last-name,industry,headline)");
+		OAuthRequest oauthRequest = new OAuthRequest(Verb.GET, "http://api.linkedin.com/v1/people/~:(id,first-name,last-name,industry,headline,public-profile-url)");
 		service.signRequest(accessToken, oauthRequest);
 		Response oauthResponse = oauthRequest.send();
 		
 		String responseBody = oauthResponse.getBody();
+		System.out.println(responseBody);
 		if(StringUtils.isNotBlank(responseBody)) {
 			LinkedInParser parser = new LinkedInParser();
 			User user = parser.getUser(responseBody);
+			userService.save(user);
 			request.setAttribute(ATTR_LOGGED_IN_USER, user, SCOPE_SESSION);
 		}
 

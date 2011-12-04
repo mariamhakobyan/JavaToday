@@ -1,5 +1,6 @@
 package co.javatoday.oauth.parser;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,14 +16,16 @@ public class FacebookParser {
 	public User getUser(String jsonData) {
 		final User user = new User();
 		user.setUserSource(UserSource.FaceBook);
+		user.setLastLogin((new Date()).getTime());
 		
 		HashMap<String, Object> map = parse(jsonData);
 		
-		user.setId((String)map.get("id"));
+		user.setSocialId((String)map.get("id"));
 		user.setFirstName((String)map.get("first_name"));
 		user.setLastName((String)map.get("last_name"));
 		user.setLastName((String)map.get("last_name"));
-
+		user.setLink((String)map.get("link"));
+		
 		return user;
 	}
 

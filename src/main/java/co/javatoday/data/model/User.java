@@ -3,20 +3,31 @@ package co.javatoday.data.model;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.document.mongodb.index.Indexed;
+import org.springframework.data.document.mongodb.mapping.Document;
+
+import com.mysema.query.annotations.QueryEntity;
 
 import co.javatoday.util.StringUtils;
 
-public class User implements Serializable {
+@QueryEntity
+@Document
+public class User extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = -4623786185488515904L;
     
-    
 	@Id
 	private String id;
+	
+	@Indexed
+	private String socialId;
+	
 	private String firstName;
 	private String lastName;
 	private String title;
 	private int userSource;
+	private String link;
+	private long lastLogin;
 
 	/**
 	 * @return the id
@@ -119,14 +130,58 @@ public class User implements Serializable {
     	return name.toString();
     }
 
+	/**
+     * @return the link
+     */
+    public String getLink() {
+    	return link;
+    }
+
+	/**
+     * @param link the link to set
+     */
+    public void setLink(String link) {
+    	this.link = link;
+    }
+
+	/**
+     * @return the lastLogin
+     */
+    public long getLastLogin() {
+    	return lastLogin;
+    }
+
+	/**
+     * @param lastLogin the lastLogin to set
+     */
+    public void setLastLogin(long lastLogin) {
+    	this.lastLogin = lastLogin;
+    }
+
+	/**
+     * @return the socialId
+     */
+    public String getSocialId() {
+    	return socialId;
+    }
+
+	/**
+     * @param socialId the socialId to set
+     */
+    public void setSocialId(String socialId) {
+    	this.socialId = socialId;
+    }
+
 	/* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-	    return "User [id=" + id + ", firstName=" + firstName + ", lastName="
-	            + lastName + ", title=" + title + ", userSource=" + userSource
-	            + "]";
+	    return "User [id=" + id + ", socialId=" + socialId + ", firstName="
+	            + firstName + ", lastName=" + lastName + ", title=" + title
+	            + ", userSource=" + userSource + ", link=" + link
+	            + ", lastLogin=" + lastLogin + "]";
     }
+
     
 }

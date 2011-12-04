@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.javatoday.data.model.User;
 import co.javatoday.oauth.OAuthServiceProvider;
 import co.javatoday.oauth.parser.FacebookParser;
+import co.javatoday.service.Service;
 import co.javatoday.util.StringUtils;
 import static co.javatoday.web.SessionAttributes.*;
 
@@ -25,6 +26,10 @@ public class FacebookController {
 	@Autowired
 	@Qualifier("facebookServiceProvider")
 	private OAuthServiceProvider facebookServiceProvider;
+	
+	@Autowired
+	@Qualifier("userService")
+	Service userService;
 	
 	private static final Token EMPTY_TOKEN = null;
 	
@@ -67,6 +72,7 @@ public class FacebookController {
 		if(StringUtils.isNotBlank(responseBody)) {
 			FacebookParser parser = new FacebookParser();
 			User user = parser.getUser(responseBody);
+			userService.save(user);
 			request.setAttribute(ATTR_LOGGED_IN_USER, user, SCOPE_SESSION);
 		}
 

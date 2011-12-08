@@ -1,3 +1,4 @@
+<%@page import="co.javatoday.data.model.Article"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -25,111 +26,45 @@
 		</ul>
 	</nav>
 	<section id="articles" class="cf">
-		<article>
-			<div class="left cf">
-				<div class="arrow">
-					<a class="up" href="/vote-up" title="Vote Up this Articles">Vote Up this Articles</a>
-					<a class="down" href="/vote-down" title="Vote Down this Articles">Vote Down this Articles</a>
+		<c:forEach items = "${articles.content}" var="article">
+			<article>
+				<div class="left cf">
+					<div class="arrow">
+						<a class="up" href="/vote-up" title="Vote Up this Articles">Vote Up this Articles</a>
+						<a class="down" href="/vote-down" title="Vote Down this Articles">Vote Down this Articles</a>
+					</div>
+					<div class="count">
+						<span>21</span>
+						<span>1</span>
+					</div>
 				</div>
-				<div class="count">
-					<span>21</span>
-					<span>1</span>
+				<div class="right">
+					<div class="name">
+						<a href=""><c:out value="${article.title}"/></a>
+					</div>
+					<div class="resume">
+						<c:out value="${article.limitedText}" escapeXml="true"/>...
+					</div>
+					<div class="tags">
+						<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
+					</div>
+					<div class="actions">
+						<a href="">Clean Read</a> &bull; <a href="">Read later</a>
+					</div>
 				</div>
-			</div>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health Track and Optimize Your Healthcare</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare Track and Optimize Your Healthcare and Optimize Your Healthcare Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-				<div class="actions">
-					<a href="">Clean Read</a> &bull; <a href="">Read later</a>
-				</div>
-			</div>
-		</article>
-		<article>
-			<div class="left cf">
-				<div class="arrow">
-					<a class="up" href="/vote-up" title="Vote Up this Articles">Vote Up this Articles</a>
-					<a class="down" href="/vote-down" title="Vote Down this Articles">Vote Down this Articles</a>
-				</div>
-				<div class="count">
-					<span>0</span>
-					<span>16</span>
-				</div>
-			</div>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-			</div>
-		</article>
-		<article>
-			<div class="left cf">
-				<div class="arrow">
-					<a class="up" href="/vote-up" title="Vote Up this Articles">Vote Up this Articles</a>
-					<a class="down" href="/vote-down" title="Vote Down this Articles">Vote Down this Articles</a>
-				</div>
-				<div class="count">
-					<span>9999</span>
-					<span>2</span>
-				</div>
-			</div>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-			</div>
-		</article>
-		<article>
-			<div class="left cf">
-				<div class="arrow">
-					<a class="up" href="/vote-up" title="Vote Up this Articles">Vote Up this Articles</a>
-					<a class="down" href="/vote-down" title="Vote Down this Articles">Vote Down this Articles</a>
-				</div>
-				<div class="count">
-					<span>994</span>
-					<span>15</span>
-				</div>
-			</div>
-			<div class="right">
-				<div class="name">
-					<a href="">Cake Health</a>
-				</div>
-				<div class="resume">
-					Track and Optimize Your Healthcare
-				</div>
-				<div class="tags">
-					<a href="">San Francisco</a> &bull; <a href="">Health Care</a>
-				</div>
-			</div>
-		</article>
+			</article>
+		</c:forEach>
 	</section>
 	
 	<!-- pagination -->
 	<nav>
 		<ul class="pagination" data-pages="4">
+			<!-- TODO disable if no prev -->
 			<li class="prev"><a href="" title="Previous" data-page="1">Previous</a></li>
-			<li><a href="" title="Page 1" data-page="1">1</a></li>
-			<li><a class="active" href="" title="Page 2" data-page="2">2</a></li>
-			<li><a href="" title="Page 3" data-page="3">3</a></li>
-			<li><a href="" title="Page 4" data-page="4">4</a></li>
+			<c:forEach var="page" begin="1" end="${articles.totalPages}" step="1">
+				<li><a class='<c:if test="${(articles.number + 1) eq page}"><c:out value="active" /> </c:if>' href="" title="Page 2" data-page="2"><c:out value="${page}" /></a></li>
+			</c:forEach>
+			<!-- TODO disable if no next -->
 			<li class="next"><a href="" title="Next" data-page="3">Next</a></li>
 		</ul>
 	</nav>

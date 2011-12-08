@@ -1,7 +1,11 @@
 package co.javatoday.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import com.mysema.query.types.Predicate;
 
 import co.javatoday.data.model.BaseModel;
 import co.javatoday.data.model.QUser;
@@ -34,5 +38,15 @@ public class UserService implements co.javatoday.service.Service {
 	@Override
 	public <T extends BaseModel> void delete(T obj) {
 		userRepository.delete((User) obj);
+	}
+	
+	@Override
+	public Page<? extends BaseModel> findAll(Predicate predicate, Pageable pagable) {
+		return null;
+	}
+	
+	@Override
+	public Page<? extends BaseModel> findAll(Pageable pagable) {
+		return null;
 	}
 }

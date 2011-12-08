@@ -3,8 +3,11 @@ package co.javatoday.data.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.document.mongodb.mapping.Document;
 
+import com.mysema.query.annotations.QueryEntity;
+
+@QueryEntity
 @Document
-public class Article {
+public class Article extends BaseModel {
 
 	@Id
 	private String id;
@@ -46,6 +49,16 @@ public class Article {
 	 */
 	public String getText() {
 		return text;
+	}
+	
+	/**
+	 * @return the text
+	 */
+	public String getLimitedText() {
+		if(text != null) {
+			return text.substring(0, 132);
+		}
+		return null;
 	}
 
 	/**

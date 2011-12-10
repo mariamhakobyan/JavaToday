@@ -11,9 +11,9 @@
 	<div id="loader"></div>
 	<nav>
 		<ul id="tabs" class="cf">
-			<li class="on"><a href="/recent-articles" title="Recent Articles">Recent Articles</a></li>
-			<li>
-				<a href="/top-articles" title="Top Articles">Top Articles</a>
+			<li class="<c:if test="${(subTab eq \"recent\") || (subTab eq null)}"><c:out value="on" /></c:if>"><a href="<c:url value="/articles/recent" />" title="Recent Articles">Recent Articles</a></li>
+			<li class="<c:if test="${subTab eq \"top\"}"><c:out value="on" /></c:if>">
+				<a href="<c:url value="/articles/top" />" title="Top Articles">Top Articles</a>
 				<select name="filter">
 					<option value="all">All time</option>
 					<option value="month">This month</option>
@@ -21,8 +21,8 @@
 					<option value="day">Today</option>
 				</select>
 			</li>
-			<li><a href="/read-later-articles" title="Read Later Articles">Read Later Articles</a></li>
-			<li><a href="/liked-articles" title="Liked Articles">Liked Articles</a></li>
+			<li class="<c:if test="${subTab eq \"later\"}"><c:out value="on" /></c:if>"><a href="<c:url value="/articles/later" />" title="Read Later Articles">Read Later Articles</a></li>
+			<li class="<c:if test="${subTab eq \"favorite\"}"><c:out value="on" /></c:if>"><a href="<c:url value="/articles/favorite" />" title="Liked Articles">Liked Articles</a></li>
 		</ul>
 	</nav>
 	<section id="articles" class="cf">
@@ -59,20 +59,37 @@
 	<!-- pagination -->
 	<nav>
 		<ul class="pagination" data-pages="4">
-			<!-- TODO disable if no prev -->
-			<li class="prev"><a href="" title="Previous" data-page="1">Previous</a></li>
+			<c:choose>
+				<c:when test="${articles.hasPreviousPage}">
+					<li class="prev"><a href='<c:url value="/articles/recent/page/${articles.number}" />' title="Previous" data-page="1">Previous</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="prev"><a class="disable" href="#" title="Previous" data-page="1">Previous</a></li>
+				</c:otherwise>
+			</c:choose>
 			<c:forEach var="page" begin="1" end="${articles.totalPages}" step="1">
-				<li><a class='<c:if test="${(articles.number + 1) eq page}"><c:out value="active" /> </c:if>' href="" title="Page 2" data-page="2"><c:out value="${page}" /></a></li>
+				<li>
+					<a class='<c:if test="${(articles.number + 1) eq page}"><c:out value="active" /> </c:if>' 
+					   href='<c:url value="/articles/recent/page/${page}" />' 
+					   title="Page <c:out value="${page}" />" 
+					   data-page="<c:out value="${page}" />"><c:out value="${page}" /></a>
+				</li>
 			</c:forEach>
-			<!-- TODO disable if no next -->
-			<li class="next"><a href="" title="Next" data-page="3">Next</a></li>
+			<c:choose>
+				<c:when test="${articles.hasNextPage}">
+					<li class="prev"><a href='<c:url value="/articles/recent/page/${articles.number + 2}" />' title="Next" data-page="3">Next</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="prev"><a class="disable" href="#" title="Next" data-page="3">Next</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</nav>
 	
 	<!-- submenu -->
 	<nav>
 		<ul id="sub-menu">
-			<li><a href="" title="Terms and Conditions">Terms & Conditions</a></li>
+			<li><a href="" title="Terms and Conditions">Terms &amp; Conditions</a></li>
 			<li><a href="<c:url value="/contact" />" title="Contact">Contact</a></li>
 		</ul>
 	</nav>

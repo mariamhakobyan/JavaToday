@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.javatoday.ApplicationAttributes;
 import co.javatoday.data.model.Article;
+import co.javatoday.data.model.PageImpl;
 import co.javatoday.service.Service;
 
 @Controller
@@ -29,7 +30,7 @@ public class WelcomeController {
 		Page<Article> articles = (Page<Article>) articleService.findAll(pageRequest);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("articles", articles);
+		mav.addObject("articles", new PageImpl<Article>(articles));
 		mav.setViewName("welcomePage");
 		return mav;
 	}

@@ -17,6 +17,7 @@ window.addEvent('domready', function(){
 	}
 	
 	$$(".pagination li a").addEvent("click", function(e){
+		/*
 		e.stop();
 
 		showLoader();
@@ -35,14 +36,17 @@ window.addEvent('domready', function(){
 				$("loader").set('text', 'Sorry, your request failed.');
 			}
 		}).send();
+		*/
 	});
 	
 	$$("#tabs li a").addEvent("click", function(e){
+		/*
 		e.stop();
 		showLoader();
 		$$("#tabs li").removeClass("on");
 		this.getParent("li").addClass("on");
 		hideLoader();
+		*/
 	});
 	
 	if($("map")) {

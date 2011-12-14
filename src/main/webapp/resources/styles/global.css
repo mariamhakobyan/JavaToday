@@ -73,15 +73,19 @@ header .logo {
 }
 
 #main-menu li {
-  display: inline-block;
+  display: block;
+  float: left;
   font-size: 16px;
   font-weight: bold;
   height: 19px;
   margin: 0;
   padding: 35px 8px 25px 8px;
 }
+#main-menu li a {
+	display: block;
+}
 #main-menu li.login {
-	margin-left: 120px;
+	float: right;
 }
 #main-menu li.login a {
 	font-size: 13px;
@@ -90,7 +94,7 @@ header .logo {
 #main-menu li.on, #main-menu li:hover {
 	background: url(../images/notch_home_18x9.gif) no-repeat 50% bottom;
 }
-#main-menu li.bull:hover {
+#main-menu li.bull:hover , #main-menu li.logged:hover {
 	background: none;
 }
 #main-menu li.on a {
@@ -101,6 +105,67 @@ header .logo {
   padding-left: 0;
   padding-right: 0;
 }
+#main-menu li.logged {
+	height: 29px;
+	margin-left: 70px;
+	padding: 30px 8px 20px 8px;
+	position: relative;
+}
+#main-menu li.logged a {
+	border: 1px solid #BBB;
+	height: 24px;
+	line-height: 24px;
+	padding: 3px 2px 2px 3px;
+}
+#main-menu li.logged a img {
+	display: block;
+	float: left;
+	margin-right: 5px;
+}
+#main-menu li.logged a span {
+	display: block;
+	float: left;
+}
+#main-menu li.logged a, #main-menu li.logged a:hover {
+	color: #000;
+	text-decoration: none;
+}
+#main-menu li.logged a span.icon {
+	background: url("../images/arrow_down.png") no-repeat 50% 50%;
+	display: block;
+	float: left;
+	margin: 0 5px;
+	width: 10px;
+}
+#user-dropdown {
+	left: 8px;
+	padding: 0;
+	position: absolute;
+	top: 62px;
+	z-index: 999;
+}
+#user-dropdown li {
+	display: block;
+	height: auto;
+	float: none;
+	margin-bottom: 1px;
+	padding: 0;
+}
+#user-dropdown li a {
+	background: #D8D8D8;
+	color: #444;
+	display: block;
+	text-align: left;
+	text-indent: 5px;
+}
+#user-dropdown li a:hover {
+	color: #FFF !important;
+    background: #444;
+}
+.selected {
+	background: #D8D8D8 !important;
+}
+
 /* CONTENT */
 #content {
 	background: #FFF;
@@ -360,6 +425,11 @@ h2.head {
 .pagination li a.active {
 	cursor: default;
 }
+.pagination li.disabled a, .pagination li.disabled a:hover {
+	background: #D8D8D8;
+	cursor: default;
+	color: #BBB;
+}
 
 /* SUB-MENU */
 #sub-menu {
@@ -374,10 +444,6 @@ h2.head {
 }
 #sub-menu li a {
 	color: #AAA;
-	text-decoration: underline;
-}
-#sub-menu li a:hover {
-	text-decoration: none;
 }
 
 #loader {

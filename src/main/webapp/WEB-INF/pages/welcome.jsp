@@ -64,7 +64,7 @@
 					<li class="prev"><a href='<c:url value="/articles/recent/page/${articles.number}" />' title="Previous" data-page="1">Previous</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="prev"><a class="disable" href="#" title="Previous" data-page="1">Previous</a></li>
+					<li class="prev disabled"><a href="#" title="Previous" data-page="1">Previous</a></li>
 				</c:otherwise>
 			</c:choose>
 			<c:forEach var="page" begin="1" end="${articles.totalPages}" step="1">
@@ -77,10 +77,10 @@
 			</c:forEach>
 			<c:choose>
 				<c:when test="${articles.hasNextPage}">
-					<li class="prev"><a href='<c:url value="/articles/recent/page/${articles.number + 2}" />' title="Next" data-page="3">Next</a></li>
+					<li class="next"><a href='<c:url value="/articles/recent/page/${articles.number + 2}" />' title="Next" data-page="3">Next</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="prev"><a class="disable" href="#" title="Next" data-page="3">Next</a></li>
+					<li class="next disabled"><a href="#" title="Next" data-page="3">Next</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

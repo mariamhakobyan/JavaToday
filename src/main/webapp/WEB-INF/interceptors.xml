@@ -11,18 +11,22 @@
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 		<mvc:interceptor>
+			<mvc:mapping path="/articles/**"/>
 			<mvc:mapping path="/*"/>
 			<bean class="co.javatoday.web.interceptor.ExecuteTimeInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
+			<mvc:mapping path="/articles/**"/>
 			<mvc:mapping path="/*"/>
 			<bean class="co.javatoday.web.interceptor.AuthenticationInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
+			<mvc:mapping path="/articles/**"/>
 			<mvc:mapping path="/*"/>
 			<bean class="co.javatoday.web.interceptor.DebuggerInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
+			<mvc:mapping path="/articles/**"/>
 			<mvc:mapping path="/*"/>
 			<bean class="co.javatoday.web.interceptor.MaintenanceInterceptor" />
 		</mvc:interceptor>

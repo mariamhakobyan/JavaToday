@@ -23,7 +23,18 @@
 			
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">
-					<li class="login"><a href="<c:url value="/logout" />" title="logout">Logout</a></li>
+					<li class="login logged">
+						<a id="user-profile" href="#" title="" class="cf">
+							<img src="images/avatar.jpg" title="Grigori Martirosyan" alt="Grigori Martirosyan" height="24" />
+							<span>Grigori Martirosyan</span>
+							<span class="icon">&nbsp;</span>
+						</a>
+						<ul id="user-dropdown" class="hidden">
+							<li><a href="#">Profile</a></li>
+							<li><a href="#">Settings</a></li>
+							<li><a href="<c:url value="/logout" />" title="logout">Logout</a></li>
+						</ul>
+					</li>
 				</c:when>
 				<c:otherwise>
 					<li class="login"><a href="<c:url value="/login" />" title="login">Login</a></li>

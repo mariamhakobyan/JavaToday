@@ -49,6 +49,16 @@ window.addEvent('domready', function(){
 		*/
 	});
 	
+	if($("user-profile")) {
+		$("user-profile").addEvent("click", function(){
+			this.toggleClass("selected");
+
+			var width = this.getWidth().toInt();
+			this.getNext("ul#user-dropdown").setStyle("width", width);
+			this.getNext("ul#user-dropdown").toggleClass("hidden");
+		})
+	}
+	
 	if($("map")) {
 		var map,
 			$mapEl		= $('#map'),

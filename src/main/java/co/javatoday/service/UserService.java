@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.mysema.query.types.Predicate;
 
-import co.javatoday.data.model.BaseModel;
 import co.javatoday.data.model.QUser;
 import co.javatoday.data.model.User;
 import co.javatoday.data.repository.UserRepository;
@@ -19,7 +18,6 @@ public class UserService implements co.javatoday.service.Service<User> {
 	UserRepository userRepository;
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public User save(User user) {
 		if(user.getId() == null) {
 			QUser quser = QUser.user;

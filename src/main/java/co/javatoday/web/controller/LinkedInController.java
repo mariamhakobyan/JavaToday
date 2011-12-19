@@ -28,7 +28,7 @@ public class LinkedInController {
 	
 	@Autowired
 	@Qualifier("userService")
-	Service userService;
+	Service<User> userService;
 	
 	@RequestMapping(value={"/login-linkedin"}, method = RequestMethod.GET)
 	public String login(WebRequest request) {

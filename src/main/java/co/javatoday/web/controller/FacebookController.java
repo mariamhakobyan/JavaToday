@@ -29,7 +29,7 @@ public class FacebookController {
 	
 	@Autowired
 	@Qualifier("userService")
-	Service userService;
+	Service<User> userService;
 	
 	private static final Token EMPTY_TOKEN = null;
 	

@@ -24,7 +24,7 @@ public class ArticleController {
 	
 	@Autowired
 	@Qualifier("articleService")
-	private Service articleService;
+	private Service<Article> articleService;
 	
 	@RequestMapping(value={"/a/**"}, method = RequestMethod.GET)
 	public ModelAndView view() {

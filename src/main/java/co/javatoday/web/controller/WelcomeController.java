@@ -20,7 +20,7 @@ public class WelcomeController {
 	
 	@Autowired
 	@Qualifier("articleService")
-	private Service articleService;
+	private Service<Article> articleService;
 	
 	@RequestMapping(value={"/", "/welcome"}, method = RequestMethod.GET)
 	public ModelAndView welcome() {

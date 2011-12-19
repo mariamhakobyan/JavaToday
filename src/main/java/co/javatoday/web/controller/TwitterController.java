@@ -29,7 +29,7 @@ public class TwitterController {
 	
 	@Autowired
 	@Qualifier("userService")
-	Service userService;
+	Service<User> userService;
 	
 	@RequestMapping(value={"/login-twitter"}, method = RequestMethod.GET)
 	public String login(WebRequest request) {

@@ -13,16 +13,14 @@ import co.javatoday.data.model.User;
 import co.javatoday.data.repository.UserRepository;
 
 @Service("userService")
-public class UserService implements co.javatoday.service.Service {
+public class UserService implements co.javatoday.service.Service<User> {
 
 	@Autowired
 	UserRepository userRepository;
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <T extends BaseModel> T save(T obj) {
-		User user = (User) obj;
-		
+	public User save(User user) {
 		if(user.getId() == null) {
 			QUser quser = QUser.user;
 			User existingUser = userRepository.findOne(quser.socialId.eq(user.getSocialId()).
@@ -32,21 +30,21 @@ public class UserService implements co.javatoday.service.Service {
 				user.setId(existingUser.getId());
 			}
 		}
-		return (T) userRepository.save(user);
+		return userRepository.save(user);
 	}
 
 	@Override
-	public <T extends BaseModel> void delete(T obj) {
+	public void delete(User obj) {
 		userRepository.delete((User) obj);
 	}
 	
 	@Override
-	public Page<? extends BaseModel> findAll(Predicate predicate, Pageable pagable) {
+	public Page<User> findAll(Predicate predicate, Pageable pagable) {
 		return null;
 	}
 	
 	@Override
-	public Page<? extends BaseModel> findAll(Pageable pagable) {
+	public Page<User> findAll(Pageable pagable) {
 		return null;
 	}
 }

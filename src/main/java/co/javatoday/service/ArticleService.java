@@ -8,33 +8,31 @@ import org.springframework.stereotype.Service;
 import com.mysema.query.types.Predicate;
 
 import co.javatoday.data.model.Article;
-import co.javatoday.data.model.BaseModel;
-import co.javatoday.data.model.QArticle;
 import co.javatoday.data.repository.ArticleRepository;
 
 @Service("articleService")
-public class ArticleService implements co.javatoday.service.Service {
+public class ArticleService implements co.javatoday.service.Service<Article> {
 
 	@Autowired
 	ArticleRepository articleRepository;
 	
 	@Override
-    public <T extends BaseModel> T save(T obj) {
+    public Article save(Article obj) {
 	    return null;
     }
 
 	@Override
-    public <T extends BaseModel> void delete(T obj) {
+    public void delete(Article obj) {
 	    
     }
 	
 	@Override
-	public Page<? extends BaseModel> findAll(Predicate predicate, Pageable pagable) {
+	public Page<Article> findAll(Predicate predicate, Pageable pagable) {
 	    return (Page<Article>)articleRepository.findAll(predicate, pagable);
     }
 	
 	@Override
-	public Page<? extends BaseModel> findAll(Pageable pagable) {
+	public Page<Article> findAll(Pageable pagable) {
 	    return (Page<Article>)articleRepository.findAll(pagable);
     }
 

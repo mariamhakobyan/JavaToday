@@ -12,11 +12,15 @@
 	<mongo:mongo host="${app.config.mongo.host}" port="29117" />
 	<mongo:repositories base-package="co.javatoday.data.repository" mongo-template-ref="mongoTemplate"/>
 	
-	<bean id="mongoTemplate" class="org.springframework.data.document.mongodb.MongoTemplate">
+	<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">
+		<constructor-arg name="username" value="${app.config.mongo.user}" />
+    <constructor-arg name="password" value="${app.config.mongo.password}" />
+	</bean>
+	
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongo" />
 		<constructor-arg name="databaseName" value="${app.config.mongo.databasename}" />
-		<property name="username" value="${app.config.mongo.user}" />
-    <property name="password" value="${app.config.mongo.password}" />
+		<constructor-arg ref="userCredentials" />
 	</bean>
 
 <!-- end of MongoDB -->

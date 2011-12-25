@@ -10,8 +10,8 @@
   
   
   <properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
-		<spring.data.mongo.version>1.0.0.M2</spring.data.mongo.version>
+		<spring.version>3.1.0.RELEASE</spring.version>
+		<spring.data.mongo.version>1.0.0.RELEASE</spring.data.mongo.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
   
@@ -76,6 +76,13 @@
       <scope>test</scope>
     </dependency>
     
+    <!-- Spring Test -->
+    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+    
     <!-- standard.jar --> 
 		<dependency>
 			<groupId>taglibs</groupId>
@@ -100,7 +107,7 @@
 		<dependency>
 	    <groupId>org.mongodb</groupId>
 	    <artifactId>mongo-java-driver</artifactId>
-	    <version>2.6.5</version>
+	    <version>2.7.1</version>
 		</dependency>
 		
 		<dependency>
@@ -139,13 +146,19 @@
 		<dependency>
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-apt</artifactId>
-			<version>2.2.0</version>
+			<version>2.3.0</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-mongodb</artifactId>
-			<version>2.2.0</version>
+			<version>2.3.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.indextank</groupId>
+			<artifactId>indextank-java</artifactId>
+			<version>1.0.9</version>
 		</dependency>
     
   </dependencies>
@@ -186,21 +199,21 @@
 			</plugin>
 			
 			<plugin>
-			  <groupId>com.mysema.maven</groupId>
-			  <artifactId>maven-apt-plugin</artifactId>
-			  <version>1.0</version>
-			  <executions>
-			    <execution>
-			      <phase>generate-sources</phase>
-			      <goals>
-			        <goal>process</goal>
-			      </goals>
-			      <configuration>
-			        <outputDirectory>target/generated-sources</outputDirectory>
-			        <processor>com.mysema.query.apt.QuerydslAnnotationProcessor</processor>
-			      </configuration>
-			    </execution>
-			  </executions>
+				<groupId>com.mysema.maven</groupId>
+				<artifactId>maven-apt-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/generated-sources</outputDirectory>
+							<processor>org.springframework.data.mongodb.repository.support.MongoAnnotationProcessor</processor>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			
 			<!--

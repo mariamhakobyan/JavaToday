@@ -1,7 +1,7 @@
 package co.javatoday.data.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.document.mongodb.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.mysema.query.annotations.QueryEntity;
 
